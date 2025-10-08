@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINGS RESCUE AFRICA | Empowering Youth, Transforming Communities</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Load Lucide Icons for aesthetic use -->
+    <script type="module">
+        import { createIcons, X, Heart, TrendingUp, Users, NotebookText } from 'https://unpkg.com/lucide@latest';
+        createIcons({ icons: { X, Heart, TrendingUp, Users, NotebookText } });
+    </script>
+    
+    <style>
+        /* Custom Gold Colors for easy Tailwind extension */
+        :root {
+            --color-gold-600: #D6A34A;
+            --color-gold-700: #C08D2C;
+            --color-gold-500: #E6B567;
+        }
+
+        .text-gold-600 { color: var(--color-gold-600); }
+        .bg-gold-600 { background-color: var(--color-gold-600); }
+        .hover\:bg-gold-700:hover { background-color: var(--color-gold-700); }
+        .focus\:ring-gold-600:focus { --tw-ring-color: var(--color-gold-600); }
+        .border-gold-600 { border-color: var(--color-gold-600); }
+        .bg-gold-500 { background-color: var(--color-gold-500); }
+
+        /* Ensure the body uses the Inter font and smooth scrolling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f8f9; /* Light background for the site */
+        }
+        
+        /* Modal Animation - Ensures smooth transition in and out */
+        .modal-enter { opacity: 0; }
+        .modal-enter-active { opacity: 1; transition: opacity 0.3s ease-out; }
+        .modal-exit { opacity: 1; }
+        .modal-exit-active { opacity: 0; transition: opacity 0.3s ease-in; }
+        .modal-content-enter { transform: translateY(20px); opacity: 0; }
+        .modal-content-enter-active { transform: translateY(0); opacity: 1; transition: transform 0.3s ease-out, opacity 0.3s ease-out; }
+    </style>
+</head>
+<body class="antialiased text-slate-800">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center space-x-3 transition duration-150 hover:opacity-80">
+                    <span class="text-3xl font-black tracking-tight text-gray-800">KRA</span>
+                    <span class="text-xl font-bold tracking-tight text-gold-600 hidden sm:block">KINGS RESCUE AFRICA</span>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#mission" class="text-base font-medium text-gray-700 hover:text-gold-600 transition duration-150">Our Mission</a>
+                    <a href="#programs" class="text-base font-medium text-gray-700 hover:text-gold-600 transition duration-150">Programs</a>
+                    <a href="#impact" class="text-base font-medium text-gray-700 hover:text-gold-600 transition duration-150">Impact</a>
+                    <a href="#contact" class="text-base font-medium text-gray-700 hover:text-gold-600 transition duration-150">Contact</a>
+                </nav>
+
+                <!-- Donate Button (Triggers Modal) -->
+                <button id="open-donate-modal" class="bg-gold-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg transition duration-300 hover:bg-gold-700 hover:shadow-xl transform hover:scale-105 flex items-center space-x-2">
+                    <i data-lucide="heart" class="w-5 h-5"></i>
+                    <span>Donate</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- 1. Hero Section -->
+        <section id="hero" class="bg-gray-900 text-white pt-20 pb-24 md:pt-32 md:pb-40 relative overflow-hidden">
+            <!-- Background pattern/texture -->
+            <div class="absolute inset-0 opacity-10">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs><pattern id="a" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M11 0l-2 2h-3l2-2h3zm-3 8l2 2h-3l-2-2h3zm4 4l-2 2h-3l2-2h3zm-3 8l2 2h-3l-2-2h3z" fill="#D6A34A" fill-opacity="0.3"></path></pattern></defs>
+                    <rect width="100%" height="100%" fill="url(#a)"></rect>
+                </svg>
+            </div>
+
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <p class="text-lg font-medium text-gold-500 mb-4">RESCUING ROYALTY</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                    Empowering the Next Generation of <span class="text-gold-600 block sm:inline">African Leaders</span>
+                </h1>
+                <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-10 text-gray-300">
+                    We provide crucial trauma healing, mentorship, and digital skills training to vulnerable youth across Africa, ensuring they rise to their potential.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#programs" class="bg-gold-600 text-white font-bold px-8 py-3 rounded-xl shadow-xl hover:bg-gold-700 transition duration-300 transform hover:scale-105">
+                        Explore Our Work
+                    </a>
+                    <button id="open-donate-modal-2" class="bg-white text-gray-900 font-bold px-8 py-3 rounded-xl shadow-xl transition duration-300 hover:bg-gray-100 transform hover:scale-105">
+                        Sponsor a King
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Mission Section -->
+        <section id="mission" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-extrabold text-gray-900 mb-4">Our Royal Mandate</h2>
+                    <p class="text-xl text-gray-600">Why we exist, and what we strive to achieve every single day.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Pillar 1 - Added hover:shadow-xl and hover lift -->
+                    <div class="text-center p-6 rounded-xl shadow-lg border-t-4 border-gold-600 bg-gray-50 transition duration-300 hover:shadow-xl hover:-translate-y-1 transform">
+                        <i data-lucide="heart" class="w-10 h-10 text-gold-600 mx-auto mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Trauma Healing</h3>
+                        <p class="text-gray-600">Restoring mental and emotional health to youth who have faced conflict, poverty, and displacement.</p>
+                    </div>
+                    <!-- Pillar 2 - Added hover:shadow-xl and hover lift -->
+                    <div class="text-center p-6 rounded-xl shadow-lg border-t-4 border-gold-600 bg-gray-50 transition duration-300 hover:shadow-xl hover:-translate-y-1 transform">
+                        <i data-lucide="users" class="w-10 h-10 text-gold-600 mx-auto mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Mentorship</h3>
+                        <p class="text-gray-600">Connecting young people with positive role models to build self-esteem, character, and leadership skills.</p>
+                    </div>
+                    <!-- Pillar 3 - Added hover:shadow-xl and hover lift -->
+                    <div class="text-center p-6 rounded-xl shadow-lg border-t-4 border-gold-600 bg-gray-50 transition duration-300 hover:shadow-xl hover:-translate-y-1 transform">
+                        <i data-lucide="trending-up" class="w-10 h-10 text-gold-600 mx-auto mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Digital Empowerment</h3>
+                        <p class="text-gray-600">Providing access to technology and cutting-edge digital training for future economic independence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Programs Section -->
+        <section id="programs" class="py-20 md:py-32 bg-f7f8f9">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold uppercase text-gold-600">Our Pillars of Success</span>
+                    <h2 class="text-4xl font-extrabold text-gray-900 mt-2">The Kings Rescue Curriculum</h2>
+                </div>
+
+                <!-- Program Card 1 - Enhanced hover lift -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 mb-12 flex flex-col md:flex-row items-center transition duration-300 hover:shadow-2xl hover:-translate-y-1 transform">
+                    <div class="md:w-1/3 mb-6 md:mb-0 md:mr-8 text-center">
+                        <i data-lucide="notebook-text" class="w-16 h-16 text-gold-600 mx-auto"></i>
+                        <h3 class="text-2xl font-bold mt-4">The Digital King Program</h3>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-gray-600 text-lg mb-4">
+                            A 6-month intensive training focused on essential digital literacy, graphic design, and remote work skills. This program directly addresses the high unemployment rates by equipping youth with globally marketable talents.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
+                            <li>Web Fundamentals (HTML/CSS/JS)</li>
+                            <li>Remote Freelancing & Business Skills</li>
+                            <li>Advanced Graphic Design Tools</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Program Card 2 - Enhanced hover lift -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col md:flex-row items-center transition duration-300 hover:shadow-2xl hover:-translate-y-1 transform">
+                    <div class="md:w-1/3 mb-6 md:mb-0 md:mr-8 text-center">
+                        <i data-lucide="heart" class="w-16 h-16 text-gold-600 mx-auto"></i>
+                        <h3 class="text-2xl font-bold mt-4">The Inner Royalty Project</h3>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-gray-600 text-lg mb-4">
+                            Specialized psycho-social support and trauma-informed care delivered by certified counselors. We help youth process their past, build resilience, and develop a positive self-identity.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
+                            <li>Weekly Group Therapy Sessions</li>
+                            <li>Individual Trauma Counseling</li>
+                            <li>Resilience and Stress Management Workshops</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Impact Callout Section -->
+        <section id="impact" class="py-20 md:py-24 bg-gold-600/10 border-y-4 border-gold-600">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl font-extrabold text-gray-900 mb-6">Our Impact, By the Numbers</h2>
+                <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-10">
+                    Your donations directly translate into life-changing outcomes for our beneficiaries.
+                </p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <!-- Metric 1 - Added hover scale and shadow -->
+                    <div class="p-4 bg-white rounded-xl shadow-lg transition duration-300 hover:shadow-xl hover:scale-[1.03] transform">
+                        <p class="text-5xl font-black text-gold-700">450+</p>
+                        <p class="text-gray-600 font-semibold mt-2">Youth Mentored</p>
+                    </div>
+                    <!-- Metric 2 - Added hover scale and shadow -->
+                    <div class="p-4 bg-white rounded-xl shadow-lg transition duration-300 hover:shadow-xl hover:scale-[1.03] transform">
+                        <p class="text-5xl font-black text-gold-700">90%</p>
+                        <p class="text-gray-600 font-semibold mt-2">Program Completion Rate</p>
+                    </div>
+                    <!-- Metric 3 - Added hover scale and shadow -->
+                    <div class="p-4 bg-white rounded-xl shadow-lg transition duration-300 hover:shadow-xl hover:scale-[1.03] transform">
+                        <p class="text-5xl font-black text-gold-700">75%</p>
+                        <p class="text-gray-600 font-semibold mt-2">Gained Employment/Freelance</p>
+                    </div>
+                    <!-- Metric 4 - Added hover scale and shadow -->
+                    <div class="p-4 bg-white rounded-xl shadow-lg transition duration-300 hover:shadow-xl hover:scale-[1.03] transform">
+                        <p class="text-5xl font-black text-gold-700">12K+</p>
+                        <p class="text-gray-600 font-semibold mt-2">Counselling Hours Provided</p>
+                    </div>
+                </div>
+                
+                <button id="open-donate-modal-3" class="mt-12 bg-gold-600 text-white font-bold px-10 py-4 rounded-full text-lg shadow-2xl transition duration-300 hover:bg-gold-700 transform hover:scale-105">
+                    Help Us Reach the Next 1000
+                </button>
+            </div>
+        </section>
+
+        <!-- 5. Contact Footer CTA -->
+        <section id="contact" class="py-16 md:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
+                <h2 class="text-4xl font-extrabold text-gray-900 mb-4">Partner With Us</h2>
+                <p class="text-xl text-gray-600 mb-8">
+                    Whether you are an individual supporter or a corporate partner, your involvement is crucial. Contact us today to learn how your skills or resources can empower a young King or Queen.
+                </p>
+                <!-- WHATSAPP CHAT LINK -->
+                <a href="https://wa.me/254742280222?text=Hello%20Kings%20Rescue%20Africa%2C%20I%20am%20interested%20in%20partnering%20with%20you." target="_blank" class="inline-block border-2 border-gold-600 text-gold-600 font-bold px-8 py-3 rounded-xl transition duration-300 hover:bg-gold-600 hover:text-white transform hover:scale-105">
+                    Get in Touch
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-3xl font-black tracking-tight text-gold-600 block mb-3">KRA</span>
+            <div class="flex justify-center space-x-6 text-sm mb-6">
+                <a href="#mission" class="text-gray-400 hover:text-gold-600 transition duration-150">Mission</a>
+                <a href="#programs" class="text-gray-400 hover:text-gold-600 transition duration-150">Programs</a>
+                <a href="#impact" class="text-gray-400 hover:text-gold-600 transition duration-150">Impact</a>
+                <a href="https://twitter.com/kingsrescue" target="_blank" class="text-gray-400 hover:text-gold-600 transition duration-150">Twitter</a>
+            </div>
+            <p class="text-sm text-gray-400">&copy; 2025 KINGS RESCUE AFRICA. Empowering the future.</p>
+        </div>
+    </footer>
+
+    <!-- DONATION MODAL (POP-UP) -->
+    <div id="donation-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex items-center justify-center p-4 hidden modal-exit">
+        
+        <!-- Modal Content Container -->
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto relative p-6 sm:p-10 border-t-8 border-gold-600 modal-content-enter">
+            
+            <!-- Close Button -->
+            <button id="close-donate-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 p-2 rounded-full bg-gray-100 transition duration-150 hover:bg-gray-200 transform hover:rotate-90">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <!-- Modal Title -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900">
+                    Be the King in Someone's Story
+                </h2>
+                <p class="mt-2 text-md text-gray-600">
+                    Your generous support transforms lives through healing and training.
+                </p>
+            </div>
+
+            <!-- Donation Form Content -->
+            <form id="donationForm">
+                <!-- 1. Donation Frequency -->
+                <div class="mb-6">
+                    <label class="block text-lg font-bold text-gray-800 mb-3">Choose Frequency</label>
+                    <div class="flex space-x-3">
+                        <button type="button" data-frequency="one-time" class="frequency-btn flex-1 p-3 border-2 border-gold-600 rounded-xl text-base font-semibold bg-gold-600 text-white shadow-lg transition-all duration-200 transform hover:scale-[1.02]">
+                            One-Time Gift
+                        </button>
+                        <!-- Added transform hover:scale -->
+                        <button type="button" data-frequency="monthly" class="frequency-btn flex-1 p-3 border-2 border-gray-300 rounded-xl text-base font-semibold bg-white text-gray-700 transition-all duration-200 hover:border-gold-600 hover:bg-gray-50 transform hover:scale-[1.02]">
+                            Monthly Partner
+                        </button>
+                    </div>
+                    <p id="frequency-message" class="mt-2 text-sm text-gray-500 h-5">
+                        You are setting up a **One-Time Gift**.
+                    </p>
+                </div>
+
+                <!-- 2. Donation Amounts -->
+                <div class="mb-6">
+                    <label class="block text-lg font-bold text-gray-800 mb-3">Select Amount</label>
+                    <div id="amount-options" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <!-- Amounts will be rendered here by JS -->
+                    </div>
+                </div>
+
+                <!-- 3. Custom Amount Input -->
+                <div class="mb-6">
+                    <label for="customAmount" class="block text-lg font-bold text-gray-800 mb-2">Or Enter Custom Amount (USD)</label>
+                    <input type="number" id="customAmount" name="customAmount" min="1" placeholder="e.g. 100" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-gold-600 focus:border-gold-600 text-xl font-medium transition-all duration-200" value="">
+                </div>
+                
+                <!-- 4. Impact Summary (Dynamic) -->
+                <div id="impact-summary" class="bg-gold-50 border border-gold-600/50 p-4 rounded-xl mb-6 transition-all duration-300 min-h-[50px] flex items-center">
+                    <p class="text-gold-700 font-medium italic text-center w-full">Your gift of **\$50** can provide trauma counselling for one youth for a month.</p>
+                </div>
+
+                <!-- 5. Payment Method Selection -->
+                <div class="mb-6">
+                    <label class="block text-lg font-bold text-gray-800 mb-3">Choose Payment Method</label>
+                    <div class="flex space-x-3">
+                        <!-- Added transform hover:scale -->
+                        <button type="button" data-method="card" class="payment-btn flex-1 p-3 border-2 border-gray-300 rounded-xl text-base font-semibold bg-white text-gray-700 transition-all duration-200 hover:border-gold-600 hover:bg-gray-50 transform hover:scale-[1.02]">
+                            Credit Card
+                        </button>
+                        <!-- Added transform hover:scale -->
+                        <button type="button" data-method="mpesa" class="payment-btn flex-1 p-3 border-2 border-gold-600 rounded-xl text-base font-semibold bg-gold-600 text-white shadow-lg transition-all duration-200 transform hover:scale-[1.02]">
+                            M-Pesa (Kenya)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 6. INTERACTIVE M-Pesa Phone Number Input (New) -->
+                <div id="mpesa-phone-fields" class="mb-6">
+                    <label for="mpesaPhone" class="block text-sm font-medium text-gray-700 mb-1">M-Pesa Registered Phone Number (e.g. 254712345678)</label>
+                    <input type="tel" id="mpesaPhone" name="mpesaPhone" placeholder="Start with country code (e.g., 254)" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-gold-600 focus:border-gold-600 text-xl font-medium">
+                </div>
+                
+                <!-- 7. M-Pesa Instructions/STK Simulation Details -->
+                <div id="mpesa-details" class="bg-blue-50 border border-blue-300 p-4 rounded-xl mb-6">
+                    <p class="font-bold text-blue-800 mb-2">M-Pesa Paybill Instructions:</p>
+                    <p class="text-sm text-blue-700">Once you click 'Send STK Push', please check your phone for the M-Pesa prompt to complete the payment manually.</p>
+                    <div class="mt-3 p-3 bg-white rounded-lg shadow-inner">
+                        <p class="text-sm font-medium">Business No: <strong class="text-gold-700 text-base">991070</strong></p>
+                        <p class="text-sm font-medium">Account No: <strong class="text-gold-700 text-base">Kings Rescue Africa Foundation</strong></p>
+                        <p class="text-sm font-medium">Amount: <strong id="mpesa-amount-display" class="text-gold-700 text-base">$50</strong> (or equivalent KES)</p>
+                    </div>
+                </div>
+
+                <!-- 8. Donor Details (Simplified) - visible for card, hidden for M-Pesa -->
+                <div id="card-details-fields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div>
+                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="modalFullName" name="fullName" required class="w-full p-2 border border-gray-300 rounded-lg focus:ring-gold-600 focus:border-gold-600">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="modalEmail" name="email" required class="w-full p-2 border border-gray-300 rounded-lg focus:ring-gold-600 focus:border-gold-600">
+                    </div>
+                </div>
+                
+                <!-- 9. Submit Button (Dynamic Text) -->
+                <button type="submit" id="submit-donation-btn" class="w-full bg-gold-600 text-white font-extrabold text-xl px-6 py-4 rounded-xl shadow-2xl hover:bg-gold-700 transition-transform transform hover:scale-[1.005] focus:outline-none focus:ring-4 focus:ring-gold-600 focus:ring-opacity-50">
+                    Send M-Pesa STK Push
+                </button>
+
+                <!-- 10. Thank You Message (Hidden initially) -->
+                <div id="successMessage" class="hidden mt-6 p-4 rounded-xl" role="alert">
+                    <!-- Content will be injected by JS -->
+                </div>
+                
+                <!-- 11. Payment Gateway Disclaimer -->
+                <p class="mt-4 text-xs text-gray-500 text-center">
+                    Note: This is a simulation. You must complete the payment on your phone or external gateway.
+                </p>
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- JavaScript Logic for Modal and Donation Form -->
+    <script>
+        // Impact Tiers for dynamic content
+        const impactTiers = [
+            { amount: 25, impact: "provide one child with essential school supplies and a nutritious meal for a week." },
+            { amount: 50, impact: "fund a trauma counselling session for one vulnerable youth." },
+            { amount: 150, impact: "sponsor one youth's participation in the King's Mentorship program for a month." },
+            { amount: 500, impact: "cover the cost of one student's digital skills bootcamp module." }
+        ];
+
+        let selectedAmount = 50;
+        let selectedFrequency = 'one-time';
+        let selectedPaymentMethod = 'mpesa'; // Default to M-Pesa
+        const KES_RATE = 130; // Approx KES per 1 USD for display purposes
+
+        // DOM Elements
+        const modal = document.getElementById('donation-modal');
+        const openButtons = [
+            document.getElementById('open-donate-modal'),
+            document.getElementById('open-donate-modal-2'),
+            document.getElementById('open-donate-modal-3')
+        ].filter(Boolean);
+
+        const closeButton = document.getElementById('close-donate-modal');
+        
+        const amountOptionsDiv = document.getElementById('amount-options');
+        const customAmountInput = document.getElementById('customAmount');
+        const frequencyButtons = document.querySelectorAll('.frequency-btn');
+        const paymentButtons = document.querySelectorAll('.payment-btn');
+        const frequencyMessage = document.getElementById('frequency-message');
+        const impactSummary = document.getElementById('impact-summary');
+        const donationForm = document.getElementById('donationForm');
+        const successMessage = document.getElementById('successMessage');
+        const mpesaDetailsDiv = document.getElementById('mpesa-details');
+        const mpesaPhoneFields = document.getElementById('mpesa-phone-fields');
+        const mpesaPhoneInput = document.getElementById('mpesaPhone');
+        const cardDetailsFields = document.getElementById('card-details-fields');
+        const submitButton = document.getElementById('submit-donation-btn');
+        const mpesaAmountDisplay = document.getElementById('mpesa-amount-display');
+        const modalFullName = document.getElementById('modalFullName');
+        const modalEmail = document.getElementById('modalEmail');
+
+        // --- MODAL HANDLERS ---
+        
+        /** Opens the donation modal with animations and resets state. */
+        function openModal() {
+            // Reset form state to defaults
+            donationForm.reset(); 
+            setAmount(impactTiers[1].amount); // Default to $50
+            selectedFrequency = 'one-time'; 
+            setPaymentMethod('mpesa'); // Default to M-Pesa
+            successMessage.classList.add('hidden');
+            
+            modal.classList.remove('hidden', 'modal-exit-active');
+            modal.classList.add('modal-enter');
+            // Trigger animation
+            setTimeout(() => {
+                modal.classList.remove('modal-enter');
+                modal.classList.add('modal-enter-active');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        /** Closes the donation modal with animations. */
+        function closeModal() {
+            modal.classList.remove('modal-enter-active');
+            modal.classList.add('modal-exit-active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('modal-exit-active');
+            }, 300);
+        }
+
+        openButtons.forEach(btn => btn.addEventListener('click', openModal));
+        closeButton.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // --- DONATION FORM LOGIC ---
+        
+        /** Renders the buttons for predefined donation amounts. */
+        function renderAmountButtons() {
+            amountOptionsDiv.innerHTML = impactTiers.map(tier => `
+                <!-- Added transform hover:scale for amount buttons -->
+                <button type="button" data-amount="${tier.amount}" class="amount-btn p-3 border-2 ${tier.amount === selectedAmount ? 'border-gold-600 bg-gold-500 text-white shadow-md' : 'border-gray-300 bg-white text-gray-700 hover:border-gold-600 hover:bg-gray-50'} rounded-xl text-base font-bold transition-all duration-200 hover:scale-[1.05] transform">
+                    $${tier.amount}
+                </button>
+            `).join('');
+
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    setAmount(parseInt(this.dataset.amount));
+                    customAmountInput.value = ''; // Clear custom input when button is clicked
+                });
+            });
+        }
+
+        /** Updates the selected donation amount and UI. */
+        function setAmount(amount) {
+            selectedAmount = amount;
+            updateUI();
+        }
+        
+        /** Updates the selected payment method. */
+        function setPaymentMethod(method) {
+            selectedPaymentMethod = method;
+            updateUI();
+        }
+
+        /** Updates the UI to reflect the selected amount, frequency, and payment method. */
+        function updateUI() {
+            // Reset button appearance for all types
+            const resetBtnStyles = (btn) => {
+                btn.classList.remove('border-gold-600', 'bg-gold-600', 'bg-gold-500', 'text-white', 'shadow-lg', 'shadow-md');
+                btn.classList.add('border-gray-300', 'bg-white', 'text-gray-700');
+            };
+
+            // Update Amount Buttons appearance
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                resetBtnStyles(btn);
+                // Also reset the scale effect to the default for unselected buttons
+                btn.classList.remove('hover:scale-[1.05]');
+                btn.classList.add('hover:scale-[1.05]'); // Ensures transform is applied
+                
+                const btnAmount = parseInt(btn.dataset.amount);
+                if (btnAmount === selectedAmount && !customAmountInput.value) {
+                    btn.classList.add('border-gold-600', 'bg-gold-500', 'text-white', 'shadow-md');
+                }
+            });
+
+            // Update Frequency Buttons appearance
+            frequencyButtons.forEach(btn => {
+                resetBtnStyles(btn);
+                if (btn.dataset.frequency === selectedFrequency) {
+                    btn.classList.remove('hover:bg-gray-50', 'hover:border-gold-600', 'text-gray-700');
+                    btn.classList.add('border-gold-600', 'bg-gold-600', 'text-white', 'shadow-lg');
+                } else {
+                    btn.classList.add('hover:bg-gray-50', 'hover:border-gold-600', 'text-gray-700');
+                }
+            });
+            
+            // Update Payment Buttons appearance
+            paymentButtons.forEach(btn => {
+                resetBtnStyles(btn);
+                if (btn.dataset.method === selectedPaymentMethod) {
+                    btn.classList.remove('hover:bg-gray-50', 'hover:border-gold-600', 'text-gray-700');
+                    btn.classList.add('border-gold-600', 'bg-gold-600', 'text-white', 'shadow-lg');
+                } else {
+                    btn.classList.add('hover:bg-gray-50', 'hover:border-gold-600', 'text-gray-700');
+                }
+            });
+
+            // Toggle M-Pesa/Card UI Elements and validation
+            if (selectedPaymentMethod === 'mpesa') {
+                mpesaDetailsDiv.classList.remove('hidden');
+                mpesaPhoneFields.classList.remove('hidden');
+                cardDetailsFields.classList.add('hidden');
+                mpesaPhoneInput.required = true;
+                modalFullName.required = false;
+                modalEmail.required = false;
+
+                submitButton.textContent = `Send M-Pesa STK Push for $${selectedAmount}`;
+                mpesaAmountDisplay.textContent = `\$${selectedAmount}`;
+            } else { // card
+                mpesaDetailsDiv.classList.add('hidden');
+                mpesaPhoneFields.classList.add('hidden');
+                cardDetailsFields.classList.remove('hidden');
+                mpesaPhoneInput.required = false;
+                modalFullName.required = true;
+                modalEmail.required = true;
+                
+                submitButton.textContent = `Process Card Donation (Simulated) for $${selectedAmount}`;
+            }
+
+            // Update Frequency Message
+            const frequencyLabel = selectedFrequency === 'monthly' ? 'Monthly Partnership' : 'One-Time Gift';
+            frequencyMessage.innerHTML = `You are setting up a **${frequencyLabel}**.`;
+            
+            // Update Impact Summary
+            const tier = impactTiers.find(t => t.amount === selectedAmount) || impactTiers[1];
+            const impactText = tier.impact;
+            
+            // Reset to default style and content
+            impactSummary.classList.remove('bg-red-100', 'border-red-500');
+            impactSummary.classList.add('bg-gold-50', 'border-gold-600/50');
+            impactSummary.innerHTML = `
+                <p class="text-gold-700 font-medium italic text-center w-full">
+                    Your ${selectedFrequency === 'monthly' ? 'monthly' : 'gift'} of **\$${selectedAmount}** can ${impactText}
+                </p>
+            `;
+        }
+        
+        /** Initializes event listeners for the donation page. */
+        function initDonationPage() {
+            // 1. Initial Render (Amounts must be rendered first)
+            renderAmountButtons();
+            
+            // 2. Frequency Button Handlers
+            frequencyButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectedFrequency = this.dataset.frequency;
+                    updateUI();
+                });
+            });
+
+            // 3. Custom Amount Input Handler
+            customAmountInput.addEventListener('input', function() {
+                const amount = parseInt(this.value);
+                if (amount > 0) {
+                    selectedAmount = amount;
+                    // Visually deselect amount buttons when custom input is used
+                    document.querySelectorAll('.amount-btn').forEach(btn => {
+                        btn.classList.remove('border-gold-600', 'bg-gold-500', 'text-white', 'shadow-md');
+                        btn.classList.add('border-gray-300', 'bg-white', 'text-gray-700');
+                    });
+                    updateUI();
+                } else if (this.value === '') {
+                    // If cleared, default back to the $50 tier amount
+                    setAmount(impactTiers[1].amount); 
+                }
+            });
+            
+            // 4. Payment Method Handlers
+            paymentButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    setPaymentMethod(this.dataset.method);
+                });
+            });
+
+            // 5. Form Submission Handler (Simulated Transaction Logic)
+            donationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get final selected amount (handles custom input override)
+                const finalAmount = customAmountInput.value ? parseInt(customAmountInput.value) : selectedAmount;
+                const mpesaPhone = mpesaPhoneInput.value;
+                const name = modalFullName.value;
+                const email = modalEmail.value;
+
+                if (finalAmount <= 0 || isNaN(finalAmount)) {
+                    impactSummary.innerHTML = `<p class="text-red-600 font-bold text-center w-full">Donation amount must be greater than $0.</p>`;
+                    impactSummary.classList.remove('bg-gold-50', 'border-gold-600/50');
+                    impactSummary.classList.add('bg-red-100', 'border-red-500');
+                    return;
+                }
+                
+                // Clear previous message styles
+                successMessage.className = 'hidden mt-6 p-4 rounded-xl';
+                
+                // --- M-Pesa Interactive Simulation ---
+                if (selectedPaymentMethod === 'mpesa') {
+                    if (!mpesaPhone || mpesaPhone.length < 9) {
+                        // Restore error state for 5 seconds
+                        impactSummary.innerHTML = `<p class="text-red-600 font-bold text-center w-full">Please enter a valid M-Pesa phone number (e.g., 2547XXXXXXXX).</p>`;
+                        impactSummary.classList.remove('bg-gold-50', 'border-gold-600/50');
+                        impactSummary.classList.add('bg-red-100', 'border-red-500');
+                        setTimeout(updateUI, 5000);
+                        return;
+                    }
+                    
+                    const amountKES = Math.round(finalAmount * KES_RATE).toLocaleString();
+                    
+                    console.log(`STK Push Simulated: $${finalAmount} to ${mpesaPhone} (Paybill 991070)`);
+                    
+                    // Show custom message for M-Pesa STK Push - DOES NOT AUTO-CLOSE
+                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('bg-blue-100', 'border-blue-500', 'text-blue-700');
+                    successMessage.innerHTML = `
+                        <p class="font-bold text-xl">STK Push Sent - Action Required!</p>
+                        <p class="mt-2">A simulated M-Pesa prompt for **$${finalAmount}** (approx. ${amountKES} KES) has been sent to **${mpesaPhone}**.</p>
+                        <p class="mt-2 font-semibold">**IMPORTANT:** Check your phone now to enter your PIN and complete the transaction. Please close this window manually when finished.</p>
+                    `;
+                    
+                    // Reset inputs after successful 'send push' action
+                    customAmountInput.value = '';
+                    mpesaPhoneInput.value = '';
+                    setAmount(impactTiers[1].amount); 
+                    selectedFrequency = 'one-time';
+                    updateUI(); // Update UI to reset visual state
+                    
+                } else {
+                    // --- Card Simulation ---
+                    if (!name || !email) {
+                         // Restore error state for 5 seconds
+                        impactSummary.innerHTML = `<p class="text-red-600 font-bold text-center w-full">Please enter your name and email for card donation.</p>`;
+                        impactSummary.classList.remove('bg-gold-50', 'border-gold-600/50');
+                        impactSummary.classList.add('bg-red-100', 'border-red-500');
+                        setTimeout(updateUI, 5000);
+                        return;
+                    }
+
+                    console.log(`Card Donation Simulated: $${finalAmount} (${selectedFrequency}) from ${name} (${email})`);
+
+                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('bg-green-100', 'border-green-500', 'text-green-700');
+                    successMessage.innerHTML = `
+                        <p class="font-bold text-xl">Success! Transaction Processed.</p>
+                        <p class="mt-2">Your generous card donation of **\$${finalAmount}** (simulated) is complete. Thank you for empowering the next generation of African leaders.</p>
+                    `;
+
+                    // Reset all inputs
+                    customAmountInput.value = '';
+                    mpesaPhoneInput.value = '';
+                    modalFullName.value = '';
+                    modalEmail.value = '';
+                    setAmount(impactTiers[1].amount); 
+                    selectedFrequency = 'one-time';
+                    updateUI(); 
+
+                    // Auto-close modal for card (simulated immediate success)
+                    setTimeout(() => {
+                        successMessage.classList.add('hidden');
+                        closeModal();
+                    }, 5000);
+                }
+            });
+            
+            // Initialize with a default selected amount and payment method
+            setAmount(impactTiers[1].amount);
+            setPaymentMethod('mpesa');
+        }
+
+        window.onload = initDonationPage;
+
+    </script>
+</body>
+</html>
